@@ -89,7 +89,6 @@ export default {
           });
          })
         .catch(response => {
-          console.log("no render")
           this.destroyRenderTask();
           this.$emit('page-errored', {
             response,

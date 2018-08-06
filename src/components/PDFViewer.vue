@@ -1,8 +1,7 @@
 <template>
-
   <div class="pdf-viewer">
     <header class="pdf-viewer__header box-shadow">
-      <div class="pdf-preview-toggle"><a @click.prevent.stop="togglePreview" class="icon"><PreviewIcon /></a></div>
+      <!-- <div class="pdf-preview-toggle"><a @click.prevent.stop="togglePreview" class="icon"><PreviewIcon /></a></div> -->
       <span>
         <PDFZoom :scale="scale" @change="updateScale" @fit="updateFit" class="header-item"/> 
         <PDFPaginator v-model="currentPage" :pageCount="pageCount" class="header-item"/>
@@ -101,25 +100,21 @@ export default {
 
   methods: {
     initButtons() {
-      let arr = [];
       let j;
       if (this.pageCount <= 10) j = this.pageCount;
       else j = 10;
         
       for(var i = 1; i<=j; i++) {
-        arr.push(i)
+        this.buttons.push(i)
       }
-      this.buttons = arr;
     },
 
     adjustButtons() {
-      let x = Math.floor(this.currentPage / 10) * 10 + 1
-      let y = x + 9
-      let arr = []
-      for (x; x<y; x++) {
-        arr.push(x);
-      }
-      this.buttons = arr
+      let x = Math.floor(this.currentPage / 10) * 10 + 1;
+      let y = x + 9;
+      let arr = [];
+      for (x; x<y; x++) arr.push(x); 
+      this.buttons = arr;
     },
 
 
